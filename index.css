@@ -1,0 +1,15 @@
+body{
+    margin:0;
+    padding:0;
+    background: rgb(95, 44, 205);
+    background: linear-gradient(90deg, rgba(95, 44, 205, 1) 16%, rgba(151, 77, 255, 1) 71%);
+}
+
+p{
+    cursor: pointer;
+}
+
+button,input,textarea{
+    border:0;
+    outline:0;
+}
