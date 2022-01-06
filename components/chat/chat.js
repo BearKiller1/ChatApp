@@ -11,6 +11,18 @@ setInterval( () => {
     }
 }, 100);
 
+$(document).on("click","#start",function () {
+    $.ajax({
+        url: "components/chat/chat.php",
+        data: {
+            method: "ChangePartner",
+            partner_id : 1
+        },
+        success: function (response) {
+            console.log(response);
+        }
+    });
+});
 
 $(document).on("click","#start_search",function () {
     ChangeStatus(4);
@@ -22,7 +34,6 @@ $(document).on("click","#stop_search, #cancel",function () {
     SetSearch = false;
 })
 
-
 SearchPartner = () => {
     $.ajax({
         url: "components/chat/chat.php",
@@ -32,6 +43,7 @@ SearchPartner = () => {
         success: function (response) {
             response = JSON.parse(response);
             console.log(response.result);
+            
             if(response.result != 0){
                 SetSearch = false;
                 alert("Found");

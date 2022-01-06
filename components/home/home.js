@@ -22,7 +22,9 @@ $(document).on("click","#add",function () {
                 partner_gender_id:partner_gender_id
             },
             success: function (response) {
-                if(response == 1){
+                response = JSON.parse(response);
+
+                if(response.result == 1){
                     alert("Username is in use");
                 }
                 else{

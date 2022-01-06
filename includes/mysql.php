@@ -1,19 +1,35 @@
 <?php
-    // class DB{
-    //     static $servername = "localhost";
-    //     static $username = "root";
-    //     static $password = "";
-    //     static $dbname = "localhost";
-    
-    //     // Create connection
-    //     static $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-    // }
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "chat";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+
+    class Connection{
+
+        public $data;
+    
+        public function SetQuery($sql){
+            global $conn;
+            try {
+                $conn->query($sql);
+            } catch(Exception $e) {
+                echo "Connection Error ->".$e;
+            }
+        }
+
+        public function GetData($sql){
+            global $conn;
+            
+            try {
+                $data = $conn->query($sql)->fetch_assoc();
+            } catch(Exception $e) {
+                $data = "Error ->" . $e;
+            } finally{
+                return $data;
+            }
+        }
+    }
 
 ?>

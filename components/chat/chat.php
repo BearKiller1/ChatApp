@@ -1,9 +1,9 @@
 <?php
     session_start();
     include "../../includes/mysql.php";
+    $db = new Connection();
 
     $data = array();
-    $user = $_SESSION["user_id"];
 
     $chat   = new Chat();
     $method = $_REQUEST["method"];
@@ -14,16 +14,16 @@
         public function GetPartner(){
             global $conn;
             global $data;
-            $my_gender = $_SESSION["gender_id"];
+
+            global $db;
+            $my_gender      = $_SESSION["gender_id"];
             $partner_gender = $_SESSION['parnter_gender_id'];
 
-            $sql = "SELECT * 
-                    FROM    users
-                    WHERE   users.gender_id = $partner_gender 
-                    AND partner_gender_id = $my_gender 
-                    AND status_id = 4 LIMIT 1";
-
-            $partner = $conn->query($sql)->fetch_assoc();
+            $partner = $db->GetData("   SELECT  * 
+                                        FROM    users
+                                        WHERE   users.gender_id = $partner_gender 
+                                        AND partner_gender_id = $my_gender 
+                                        AND status_id = 4 LIMIT 1");
 
             if($partner == NULL || $partner == ""){
                 $data["result"] = 0;
@@ -39,21 +39,21 @@
         }
 
         public function ChangeStatus(){
+            global $db;
+
             $status = $_REQUEST["status"];
-            global $conn;
-            global $user;
-            $sql = "UPDATE users SET status_id = $status WHERE id = $user";
-            $partner = $conn->query($sql)->fetch_assoc();
+            $user   = $_SESSION["user_id"];
+
+            $db->SetQuery("UPDATE users SET status_id = $status WHERE id = $user");
+
+        }
+
+        public function ChangePartner(){
+            global $db;
+            $partnerID = $_REQUEST["partner_id"];
+            $db->SetQuery("UPDATE users SET partner_gender_id = $partnerID");
         }
     }
 
     echo json_encode(["result" => $data["result"]]);
-
-
-    // $sql = "SELECT * FROM products";
-
-    // $result = $conn->query($sql);
-    // foreach ($result as $key => $value) {
-    //     var_dump($value);
-    // }
 ?>
