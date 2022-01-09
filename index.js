@@ -1,4 +1,4 @@
-var MainPage = "chat";
+var MainPage = "home";
 var RouterURL = "router.php";
 
 window.onload = () => {

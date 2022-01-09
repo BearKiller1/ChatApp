@@ -1,10 +1,11 @@
 body{
     margin:0;
     padding:0;
-    background: rgb(95, 44, 205);
-    background: linear-gradient(90deg, rgba(95, 44, 205, 1) 16%, rgba(151, 77, 255, 1) 71%);
+    background-image: url("https://ak.picdn.net/shutterstock/videos/1028449436/thumb/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-
 p{
     cursor: pointer;
 }

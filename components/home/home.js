@@ -1,4 +1,5 @@
 $(document).on("click","#add",function () {
+
     var name = $("#username").val();
     var gender_id = $("#user_gender").val();
     var partner_gender_id = $("#partner_gender").val();
@@ -33,6 +34,4 @@ $(document).on("click","#add",function () {
             }
         });
     }
-
-
 })

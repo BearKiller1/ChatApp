@@ -1,8 +1,9 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "chat";
+    $servername = "bpsin91g95fditjmzhzw-mysql.services.clever-cloud.com";
+    $username = "uditv2kgxca2jstv";
+    $password = "sjanM2u8FHVdfmd6McZo";
+    $dbname = "bpsin91g95fditjmzhzw";
+    
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
